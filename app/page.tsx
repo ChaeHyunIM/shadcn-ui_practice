@@ -55,13 +55,11 @@ export default function Home() {
     setTableData(filteredMovies);
   };
 
-  console.log(tableData);
-
-  const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      search();
-    }
-  };
+  // const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (e.key === "Enter") {
+  //     search();
+  //   }
+  // };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -84,23 +82,23 @@ export default function Home() {
       <div className="flex gap-10">
         <Input
           className="w-[500px]"
-          placeholder="장한 똥꾸 빵꾸를 입력해주세요."
+          placeholder="제목으로 검색하세요"
           onChange={handleInputChange}
           value={searchTerm}
-          onKeyDown={handleEnterPress}
+          // onKeyDown={handleEnterPress}
         />
         <div className="flex gap-3">
-          <Button onClick={search}>Search</Button>
+          <Button onClick={search}>검색</Button>
           <Button
             variant="outline"
             onClick={() => setTableData(resetTableData)}
           >
-            Reset
+            초기화
           </Button>
         </div>
       </div>
-      <Input type="file" onChange={handleFileUpload} />
-      <Table>
+      <Input type="file" onChange={handleFileUpload} className="w-[800px]" />
+      <Table className="w-full">
         <TableHeader>
           <TableRow>
             <TableHead className="w-1/3">Cluster</TableHead>
@@ -124,12 +122,14 @@ export default function Home() {
       >
         <DialogContent className="w-[30vw]">
           <DialogHeader>
-            <DialogTitle>뭐하노</DialogTitle>
-            <DialogDescription>장한아 영화 제목 똑바로 써라</DialogDescription>
+            <DialogTitle>검색을 하지 못했어요 😿</DialogTitle>
+            <DialogDescription>
+              정확한 제목으로 검색해주세요 🙏
+            </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button onClick={() => setIsAlertDialogOpen(false)}>
-              닥치고 다시 쓰기
+              제목 다시 쓰기
             </Button>
           </DialogFooter>
         </DialogContent>
