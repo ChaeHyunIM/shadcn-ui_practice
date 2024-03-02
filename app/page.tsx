@@ -17,14 +17,14 @@ export default function File() {
 
     if (!file) {
       return toast.error("파일을 업로드하는데 실패했어요.", {
-        duration: 5000,
+        duration: 1000,
         position: "top-center",
       });
     }
 
     if (file.type !== "text/csv") {
       return toast.error("csv 파일만 업로드할 수 있어요.", {
-        duration: 5000,
+        duration: 1000,
         position: "top-center",
       });
     }
@@ -34,7 +34,7 @@ export default function File() {
       complete: (result) => {
         setCsvData(result.data.flat() as csvData);
         toast.success("파일을 업로드했어요.", {
-          duration: 5000,
+          duration: 1000,
           position: "top-center",
         });
       },
@@ -58,7 +58,7 @@ export default function File() {
         onClick={() => {
           if (csvData.length === 0) {
             toast.error("CSV 파일을 업로드해주세요.", {
-              duration: 5000,
+              duration: 1000,
               position: "top-center",
             });
           } else {
